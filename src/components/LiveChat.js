@@ -14,7 +14,7 @@ const LiveChat = () => {
         name:generateRandomName(),
         message:generateRandomMessage(20)
       }))
-      console.log("API POLLING")
+      //console.log("API POLLING")
     },1500)
     return ()=>clearInterval(i);
   },[])
@@ -32,7 +32,7 @@ const LiveChat = () => {
     <form className='w-full p-2 ml-2 border border-black rounded-md my-2'
      onSubmit={(e)=>{
       e.preventDefault();
-      console.log(liveMessage);
+      //console.log(liveMessage);
       dispatch(addMessages({
         name:"Mukul",
         message: liveMessage
