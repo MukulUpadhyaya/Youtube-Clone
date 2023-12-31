@@ -59,7 +59,7 @@ export const Header = () => {
         <input
           type="text"
           // onKeyDown={() => e.target.value.length()? setShowSuggestions(true): setShowSuggestions(false)}
-          onBlur={() => setShowSuggestions(false)}
+          // onBlur={() => setShowSuggestions(false)}
           className="w-1/2 border border-gray-400 p-2 rounded-l-full"
           value={searchQuery}
           onChange={(e) => {
@@ -70,7 +70,11 @@ export const Header = () => {
           }}
         ></input>
         <Link key={"id" + searchQuery} to={"/search?q=" + searchQuery}>
-          <button className="border border-gray-400 px-5 py-2 rounded-r-full">
+          <button className="border border-gray-400 px-5 py-2 rounded-r-full" 
+           onClick={()=>{
+            setSearchQuery(searchQuery);
+            setShowSuggestions(false);
+          }}>
             🔍
           </button>
         </Link>
@@ -79,15 +83,18 @@ export const Header = () => {
         <div className="fixed bg-white ml-72 py-2 px-5 mt-12 w-[25rem] shadow-lg rounded-lg">
           <ul>
             {suggestions.map((s) => (
-              <li
-                key={s}
-                className="flex font-medium mt-1 py-1 px-4 hover:bg-gray-200 hover: cursor-default"
-                onClick={() => {
-                  console.log("list item clicked");
-                }}
+              <li key={s} className="flex font-medium mt-1 py-1 px-4 hover:bg-gray-200 hover: cursor-default"
+              onClick={()=>{
+                setSearchQuery(s);
+                setShowSuggestions(false);
+              }}
               >
+              
+              <Link to={"/search?q=" + s}>
                 🔍{s}
-              </li>
+              </Link>
+            </li>
+             
             ))}
           </ul>
         </div>
