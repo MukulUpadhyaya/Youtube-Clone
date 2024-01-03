@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { addVideoList } from "../utils/videoSlice";
 import { useDispatch, useSelector } from "react-redux";
 export const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
+  const dispatch = useDispatch();
+  const videoList = useSelector((store) => store.video.videoList);
+  console.log(videoList);
 
   useEffect(() => {
     getVideos();
@@ -14,12 +16,12 @@ export const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_API);
     const JSON = await data.json();
-    setVideos(JSON.items);
+    dispatch(addVideoList(JSON.items));
   };
 
   return (
     <div className="flex flex-wrap justify-center items-center">
-      {videos?.map((video) => {
+      {videoList?.map((video) => {
         const videoId =
           typeof video?.id === "object" ? video?.id?.videoId : video?.id;
         return (
