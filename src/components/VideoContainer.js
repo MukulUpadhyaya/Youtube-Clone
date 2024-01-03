@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 export const VideoContainer = () => {
   const dispatch = useDispatch();
   const videoList = useSelector((store) => store.video.videoList);
-  console.log(videoList);
 
   useEffect(() => {
     getVideos();

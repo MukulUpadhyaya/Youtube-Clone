@@ -13,13 +13,18 @@ export const ButtonList = () => {
     };
 
     getData();
-  });
+  }, []);
+  if (categoryList.length === 0) return null;
   return (
     <div className="flex">
       {categoryList.map((category, index) => {
         return (
           index <= 7 && (
-            <Button key={category.id} name={category?.snippet?.title} />
+            <Button
+              key={category.id}
+              categoryId={category.id}
+              name={category?.snippet?.title}
+            />
           )
         );
       })}

@@ -12,7 +12,6 @@ export const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const searchCache = useSelector((store) => store.search);
-  console.log(searchQuery, "new");
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchCache[searchQuery]) {
@@ -37,7 +36,7 @@ export const Header = () => {
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
- 
+
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-lg">
       <div className="flex col-span-1">
@@ -70,11 +69,13 @@ export const Header = () => {
           }}
         ></input>
         <Link key={"id" + searchQuery} to={"/search?q=" + searchQuery}>
-          <button className="border border-gray-400 px-5 py-2 rounded-r-full" 
-           onClick={()=>{
-            setSearchQuery(searchQuery);
-            setShowSuggestions(false);
-          }}>
+          <button
+            className="border border-gray-400 px-5 py-2 rounded-r-full"
+            onClick={() => {
+              setSearchQuery(searchQuery);
+              setShowSuggestions(false);
+            }}
+          >
             🔍
           </button>
         </Link>
@@ -83,18 +84,16 @@ export const Header = () => {
         <div className="fixed bg-white ml-72 py-2 px-5 mt-12 w-[25rem] shadow-lg rounded-lg">
           <ul>
             {suggestions.map((s) => (
-              <li key={s} className="flex font-medium mt-1 py-1 px-4 hover:bg-gray-200 hover: cursor-default"
-              onClick={()=>{
-                setSearchQuery(s);
-                setShowSuggestions(false);
-              }}
+              <li
+                key={s}
+                className="flex font-medium mt-1 py-1 px-4 hover:bg-gray-200 hover: cursor-default"
+                onClick={() => {
+                  setSearchQuery(s);
+                  setShowSuggestions(false);
+                }}
               >
-              
-              <Link to={"/search?q=" + s}>
-                🔍{s}
-              </Link>
-            </li>
-             
+                <Link to={"/search?q=" + s}>🔍{s}</Link>
+              </li>
             ))}
           </ul>
         </div>
