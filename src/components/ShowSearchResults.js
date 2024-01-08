@@ -13,8 +13,9 @@ const ShowSearchResults = () => {
     getSearchedApiData();
   }, [searchQuery]);
   const getSearchedApiData = async () => {
+    const API_KEY=process.env.REACT_APP_API_KEY;
     const data = await fetch(
-      SEARCH_RESULT_API + searchQuery + "&key=" + process.env.REACT_APP_API_KEY
+      SEARCH_RESULT_API + searchQuery + "&key=" + API_KEY
     );
     const json = await data.json();
     // console.log("searchResults", json);
