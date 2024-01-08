@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { API_KEY, SEARCH_RESULT_API } from "../utils/constant";
+import { SEARCH_RESULT_API } from "../utils/constant";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import TimeAgo from "react-timeago";
@@ -14,7 +14,7 @@ const ShowSearchResults = () => {
   }, [searchQuery]);
   const getSearchedApiData = async () => {
     const data = await fetch(
-      SEARCH_RESULT_API + searchQuery + "&key=" + API_KEY
+      SEARCH_RESULT_API + searchQuery + "&key=" + process.env.REACT_APP_API_KEY
     );
     const json = await data.json();
     // console.log("searchResults", json);

@@ -27,6 +27,7 @@ export const Header = () => {
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
+    if(searchQuery==="")return;
     const data = await fetch(SEARCH_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
