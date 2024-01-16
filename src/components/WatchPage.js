@@ -28,7 +28,7 @@ function WatchPage() {
       </div>
       <LiveChat/>
       </div>
-      <CommentsContainer/>
+      <CommentsContainer videoId={searchParams.get("v")}/>
     </div>
   );
 }

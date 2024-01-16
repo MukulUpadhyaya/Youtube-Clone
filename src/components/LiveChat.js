@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ChatMessage from './ChatMessage'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMessages } from '../utils/chatSlice'
+import { randomName, randomMessage } from "../utils/constant";
 import {generateRandomName, generateRandomMessage } from '../utils/Helper'
 
 const LiveChat = () => {
@@ -11,8 +12,8 @@ const LiveChat = () => {
   useEffect(()=>{
     const i = setInterval(()=>{
       dispatch(addMessages({
-        name:generateRandomName(),
-        message:generateRandomMessage(20)
+        name:randomName(),
+        message:randomMessage()
       }))
       //console.log("API POLLING")
     },1500)
