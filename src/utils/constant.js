@@ -8,6 +8,9 @@ export const VIDEO_CATEGORIES_API =
   "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=";
 
 
+  export const BASE_URL = "https://youtube.googleapis.com/youtube/v3";
+
+  export const header = new Headers({ "Access-Control-Allow-Origin": "*" });
   export const randomName = function generate() {
     // The function doesn't need to "return" anything. It just needs
     // to set the value of the text field to the random name.
