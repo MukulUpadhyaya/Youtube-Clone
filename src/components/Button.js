@@ -15,7 +15,7 @@ function Button({ name, categoryId }) {
     <div>
       <button
         onClick={() => handleClick(categoryId)}
-        className="px-5 py-2 m-2 bg-gray-200 rounded-lg"
+        className="px-4 py-2 m-2 bg-gray-200 rounded-lg"
       >
         {name}
       </button>

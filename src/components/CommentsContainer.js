@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 const Comments = ({ data }) => {
   const {
     snippet: {
@@ -7,17 +8,19 @@ const Comments = ({ data }) => {
     },
     replies,
   } = data;
-  const { authorDisplayName, textDisplay } = snippet;
+  const { authorDisplayName, textDisplay, authorProfileImageUrl
+  } = snippet;
 
   return (
     <div className="my-4 flex shadow-sm bg-gray-100 p-2 rounded-md">
       <img
-        className="w-8 h-8"
+        className="w-8 h-8 rounded-2xl"
         alt="user"
-        src="https://cdn0.iconfinder.com/data/icons/cryptocurrency-137/128/1_profile_user_avatar_account_person-132-512.png"
+        src = {authorProfileImageUrl}
+        //src="https://cdn0.iconfinder.com/data/icons/cryptocurrency-137/128/1_profile_user_avatar_account_person-132-512.png"
       />
       <div className="px-3">
-        <p className="font-bold">{authorDisplayName}</p>
+        <p className="font-bold">{authorDisplayName.replace('@', '')}</p>
         {/* {console.log(replies, "Reply")} */}
         <p>{textDisplay}</p>
         {replies && replies.length > 0 && (
