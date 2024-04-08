@@ -7,7 +7,7 @@ export const ButtonList = () => {
   const [categoryList, setCategoryList] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const API_KEY=process.env.REACT_APP_API_KEY;
+      const API_KEY = process.env.REACT_APP_API_KEY;
       const data = await fetch(VIDEO_CATEGORIES_API + API_KEY);
       const json = await data.json();
       setCategoryList(json.items);

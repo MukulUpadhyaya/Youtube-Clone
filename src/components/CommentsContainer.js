@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 const Comments = ({ data }) => {
-  const { snippet: { topLevelComment: { snippet } }, replies } = data;
+  const {
+    snippet: {
+      topLevelComment: { snippet },
+    },
+    replies,
+  } = data;
   const { authorDisplayName, textDisplay } = snippet;
-  
+
   return (
     <div className="my-4 flex shadow-sm bg-gray-100 p-2 rounded-md">
       <img
@@ -13,7 +18,7 @@ const Comments = ({ data }) => {
       />
       <div className="px-3">
         <p className="font-bold">{authorDisplayName}</p>
-        {console.log(replies, "Reply")}
+        {/* {console.log(replies, "Reply")} */}
         <p>{textDisplay}</p>
         {replies && replies.length > 0 && (
           <div className="pl-5 border border-l-black ml-5">
@@ -28,7 +33,7 @@ const Comments = ({ data }) => {
 const CommentList = ({ comments }) => {
   return (
     <>
-      {comments.map((comment, index) => (
+      {comments?.map((comment, index) => (
         <Comments key={index} data={comment} />
       ))}
     </>
